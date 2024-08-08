@@ -839,6 +839,7 @@ form select {
 .image-upload {
     margin-bottom: 20px;
     text-align: center;
+    margin: 0 auto 25px auto;
 }
 
 .image-upload label {
