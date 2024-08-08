@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bahan Baku</title>
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <nav>
+        <img src="../assets/logo.png" alt="Logo">
+        <div class="navigasi">
+            <ul>
+                <a href="../index.html">
+                    <li><i data-feather="user"></i> Pesanan Pelanggan</li>
+                </a>
+                <a href="menu.html">
+                    <li><i data-feather="menu"></i> Menu</li>
+                </a>
+                <a href="meja.html">
+                    <li><i data-feather="table"></i> Meja</li>
+                </a>
+                <a href="bahan_baku.html">
+                    <li class="active"><i data-feather="box"></i> Bahan Baku</li>
+                </a>
+                <a href="laporan_keuangan.html">
+                    <li><i data-feather="file-text"></i> Laporan Keuangan</li>
+                </a>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="pemanis"></div>
+
+    <section class="container">
+        <div class="header-container">
+            <div class="header-1">
+                <h1>Bahan<span> Baku</span></h1>
+            </div>
+            <div class="container-pencarian-dan-tambah">
+                <div class="pencarian">
+                    <input type="text" placeholder="Cari Nama Menu">
+                </div>
+                <div class="tambah">
+                    <button id="openTambahModal">+</button>
+                </div>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Kode Bahan</th>
+                    <th>Nama Bahan Baku</th>
+                    <th>Jumlah</th>
+                    <th>Tanggal Restok</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>BB1</td>
+                    <td>Indomie</td>
+                    <td>30</td>
+                    <td>31/07/2024</td>
+                    <td>
+                        <button class="edit" id="openEditModal"><i data-feather="edit"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>BB2</td>
+                    <td>Telor</td>
+                    <td>36</td>
+                    <td>31/07/2024</td>
+                    <td>
+                        <button class="edit" id="openEditModal"><i data-feather="edit"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Modal Tambah Bahan Baku -->
+    <div id="TambahModal" class="TambahModal">
+        <div class="modal-content-template">
+            <h2>Tambah <span>Bahan Baku</span></h2>
+            <form class="form-container">
+                <input type="text" placeholder="Nama Bahan Baku">
+                <input type="text" placeholder="Jumlah">
+                <select>
+                    <option value="" disabled selected>Tanggal Restok</option>
+                    <option value="2024-07-31">31/07/2024</option>
+                </select>
+                <div class="actions">
+                    <button type="button" class="confirm" onclick="closetemplateModal(), showNotification()"><i
+                            data-feather="check"></i></button>
+                    <button type="button" class="cancel" onclick="closetemplateModal()"><i
+                            data-feather="x"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Edit Bahan Baku -->
+    <div id="EditModal" class="EditModal">
+        <div class="modal-content-template">
+            <h2>Edit <span>Bahan Baku</span></h2>
+            <form class="form-container">
+                <input type="text" placeholder="Nama Bahan Baku">
+                <input type="text" placeholder="Jumlah">
+                <select>
+                    <option value="" disabled selected>Tanggal Restok</option>
+                    <option value="2024-07-31">31/07/2024</option>
+                </select>
+                <div class="actions">
+                    <button type="button" class="confirm" onclick="closetemplateModal(), showNotification()"><i
+                            data-feather="check"></i></button>
+                    <button type="button" class="hapus" id="openModalConfirmation"><i data-feather="trash"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Confirmation -->
+    <div id="confirmationModal" class="confirmationModal">
+        <div class="modal-content-confirmation">
+            <p><span>Hapus</span> Bahan Baku ?</p>
+            <div class="actions">
+                <button id="confirmDelete" class="confirm"><i data-feather="check"></i></button>
+                <button id="cancelDelete" class="cancel hapus"><i data-feather="x"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <div class="notification-content">
+            <span class="notification-icon">🔔</span>
+            <div class="notification-text">
+                <strong>Notifikasi</strong>
+                <p>Berhasil!</p>
+            </div>
+            <span class="notification-close" id="closeNotification">✖</span>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="../js/javascript.js"></script>
+    <script>
+        feather.replace();
+
+        var TambahModal = document.getElementById("TambahModal");
+        var EditModal = document.getElementById("EditModal");
+        var confirmationModal = document.getElementById("confirmationModal");
+
+        var openTambahModalBtn = document.getElementById("openTambahModal");
+        var openEditModalBtn = document.getElementById("openEditModal");
+        var openModalConfirmationBtns = document.querySelectorAll("#openModalConfirmation");
+
+
+        openTambahModalBtn.addEventListener("click", function () {
+            TambahModal.style.display = "block";
+        });
+
+        openEditModalBtn.addEventListener("click", function () {
+            EditModal.style.display = "block";
+        });
+
+        openModalConfirmationBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                confirmationModal.style.display = "block";
+            });
+        });
+
+        var confirmDeleteBtn = document.getElementById("confirmDelete");
+        var cancelDeleteBtn = document.getElementById("cancelDelete");
+
+        confirmDeleteBtn.addEventListener('click', function () {
+            closetemplateModal();
+        });
+
+        cancelDeleteBtn.addEventListener('click', function () {
+            confirmationModal.style.display = "none";
+        });
+
+        function closetemplateModal() {
+            TambahModal.style.display = "none";
+            EditModal.style.display = "none";
+            confirmationModal.style.display = "none";
+        }
+
+    </script>
+
+
+</body>
+
+</html>

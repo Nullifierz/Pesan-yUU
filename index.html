@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pesanan Pelanggan</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <nav>
+        <img src="assets/logo.png" alt="Logo">
+        <div class="navigasi">
+            <ul>
+                <a href="index.html">
+                    <li class="active"><i data-feather="user"></i> Pesanan Pelanggan</li>
+                </a>
+                <a href="pages/menu.html">
+                    <li><i data-feather="menu"></i> Menu</li>
+                </a>
+                <a href="pages/meja.html">
+                    <li><i data-feather="table"></i> Meja</li>
+                </a>
+                <a href="pages/bahan_baku.html">
+                    <li><i data-feather="box"></i> Bahan Baku</li>
+                </a>
+                <a href="pages/laporan_keuangan.html">
+                    <li><i data-feather="file-text"></i> Laporan Keuangan</li>
+                </a>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="pemanis"></div>
+
+    <section class="container">
+        <div class="header-container">
+            <div class="header-1">
+                <h1>Pesanan <span>Pelanggan</span></h1>
+            </div>
+            <div class="container-pencarian-dan-tambah">
+                <div class="pencarian">
+                    <input type="text" placeholder="Cari Nama Menu">
+                </div>
+                <div class="tambah">
+                    <button id="openModal">+</button>
+                </div>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Nomor Nota</th>
+                    <th>Nama Pelanggan</th>
+                    <th>Pesanan</th>
+                    <th>Total Pesanan</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>PSN1</td>
+                    <td>Asep</td>
+                    <td>Indomie Double...</td>
+                    <td>Rp. 100.000</td>
+                    <td>
+                        <button id="openModalDetailBtn"><i data-feather="eye" class="detail"></i></button>
+                        <button><i data-feather="dollar-sign" class="selesai" onclick="showNotification()"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>PSN2</td>
+                    <td>Jamal</td>
+                    <td>Extra Joss Susu...</td>
+                    <td>Rp. 50.000</td>
+                    <td>
+                        <button id="openModalDetailBtn"><i data-feather="eye" class="detail"></i></button>
+                        <button><i data-feather="dollar-sign" class="selesai" onclick="showNotification()"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Modal Tambah Pesanan -->
+    <div id="modal" class="modal">
+        <div class="modal-content scroll">
+            <div class="modal-body">
+                <div class="form-section">
+                    <h2>Tambah <span>Pesanan</span></h2>
+                    <form>
+                        <label for="nota">Nomor Nota</label>
+                        <input type="text" id="nota" name="nota" value="PSN1" readonly>
+
+                        <label for="nama">Nama Pelanggan</label>
+                        <input type="text" id="nama" name="nama" value="Asep">
+
+                        <label for="meja">Meja</label>
+                        <select id="meja" name="meja">
+                            <option value="1">Meja 1</option>
+                            <option value="2">Meja 2</option>
+                            <option value="3">Meja 3</option>
+                        </select>
+
+                        <div class="menu-items">
+                            <div class="menu-item">
+                                <img src="assets/img/image1.jpeg" alt="Indomie Double + Telor">
+                                <p>Indomie Double + Telor</p>
+                                <button class="subtract-button">-</button>
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/image2.jpg" alt="Roti Bakar">
+                                <p>Roti Bakar</p>
+                                <button class="subtract-button">-</button>
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/image3.jpeg" alt="Extra Joss Susu">
+                                <p>Extra Joss Susu</p>
+                                <button class="subtract-button">-</button>
+                            </div>
+                        </div>
+
+                        <div class="total">
+                            <p>Total Pembayaran: <span>Rp. 32.000</span></p>
+                        </div>
+
+                        <div class="actions">
+                            <button type="button" class="confirm" id="openPembayaranModal"><i
+                                    data-feather="check"></i></button>
+                            <button type="button" class="hapus" id="openModalConfirmation"><i
+                                    data-feather="trash"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="menu-section">
+                    <div class="container-pesan-menu">
+                        <div class="menu-category">
+                            <h3>Makanan Berat</h3>
+                            <div class="menu-item">
+                                <img src="assets/img/image1.jpeg" alt="Indomie Double + Telor">
+                                <p>Indomie Double + Telor</p>
+                                <p>15 K</p>
+                                <button class="add-button">+</button>
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/image1.jpeg" alt="Indomie Double + Telor">
+                                <p>Indomie Double + Telor</p>
+                                <p>15 K</p>
+                                <button class="add-button">+</button>
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/image1.jpeg" alt="Indomie Double + Telor">
+                                <p>Indomie Double + Telor</p>
+                                <p>15 K</p>
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                        <div class="menu-category">
+                            <h3>Makanan Ringan</h3>
+                            <div class="menu-item">
+                                <img src="assets/img/image2.jpg" alt="Roti Bakar">
+                                <p>Roti Bakar</p>
+                                <p>10 K</p>
+                                <button class="add-button">+</button>
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/image2.jpg" alt="Roti Bakar">
+                                <p>Roti Bakar</p>
+                                <p>10 K</p>
+                                <button class="add-button">+</button>
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/image2.jpg" alt="Roti Bakar">
+                                <p>Roti Bakar</p>
+                                <p>10 K</p>
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                        <div class="menu-category">
+                            <h3>Minuman</h3>
+                            <div class="menu-item">
+                                <img src="assets/img/image3.jpeg" alt="Extra Joss Susu">
+                                <p>Extra Joss Susu</p>
+                                <p>7 K</p>
+                                <button class="add-button">+</button>
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/image3.jpeg" alt="Extra Joss Susu">
+                                <p>Extra Joss Susu</p>
+                                <p>7 K</p>
+                                <button class="add-button">+</button>
+                            </div>
+                            <div class="menu-item">
+                                <img src="assets/img/image3.jpeg" alt="Extra Joss Susu">
+                                <p>Extra Joss Susu</p>
+                                <p>7 K</p>
+                                <button class="add-button">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Pembayaran -->
+    <div id="pembayaranModal" class="pembayaranModal">
+        <div class="modal-content-pembayaran scroll">
+            <span class="close" id="closePembayaranModal">&times;</span>
+            <h2>Pembayaran</h2>
+            <div class="pembayaran-details">
+                <form>
+                    <label for="nama">Nama Pelanggan</label>
+                    <input type="text" id="nama" name="nama" value="Asep" readonly>
+
+                    <label for="meja">Meja</label>
+                    <input type="text" value="Meja 1" readonly>
+
+                    <label for="Bayar">Bayar</label>
+                    <input type="text" value="Rp. 32.000" readonly>
+
+                    <label for="metode-pembayaran">Metode Pembayaran</label>
+                    <select id="metodePembayaran">
+                        <option value="cash">Cash</option>
+                        <option value="qris">QRIS</option>
+                    </select>
+
+                    <div id="cashOptions" class="cashOptions">
+                        <label for="uang-pelanggan">Uang Pelanggan</label>
+                        <input type="number" value="50000">
+                        <p>Kembalian Rp. 18.000</p>
+                        <button type="button" class="print-receipt" onclick="closeAllModals(), showNotification()"><i
+                                data-feather="printer"></i> Cetak
+                            Struk</button>
+                    </div>
+                </form>
+
+                <div id="qrisOptions" class="qrisOptions">
+                    <button class="buat-qris">Buat QRIS</button>
+                    <button class="belum-dibayar">Belum Dibayar</button>
+                    <button class="print-receipt" style="background-color: #007F1C; cursor: default;"><i
+                            data-feather="printer"></i>
+                        Cetak Struk</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Confirmation -->
+    <div id="confirmationModal" class="confirmationModal">
+        <div class="modal-content-confirmation">
+            <p><span>Hapus</span> Pesanan ?</p>
+            <div class="actions">
+                <button id="confirmDelete" class="confirm" onclick="showNotification()"><i
+                        data-feather="check"></i></button>
+                <button id="cancelDelete" class="cancel hapus"><i data-feather="x"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Detail -->
+    <div id="detailModal" class="detailModal">
+        <div class="modal-content-detail scroll">
+            <span class="close" id="closeDetailModal">&times;</span>
+            <div class="order-details">
+                <div class="order-info">
+                    <h2>Order <span>Pesanan</span></h2>
+                    <form>
+                        <label for="Order">Nomor Order</label>
+                        <input type="text" id="order" name="order" value="1" readonly>
+
+                        <label for="nota">Nomor Nota</label>
+                        <input type="text" id="nota" name="nota" value="PSN1" readonly>
+
+                        <label for="nama">Nama Pelanggan</label>
+                        <input type="text" id="nama" name="nama" value="Asep" readonly>
+
+                        <label for="meja">Meja</label>
+                        <input type="text" value="Meja 1" readonly>
+                    </form>
+                    <div class="total-payment">
+                        <p>Total Pembayaran</p>
+                        <p>Rp. <span>32.000</span></p>
+                    </div>
+                </div>
+                <div class="order-items">
+                    <div class="item">
+                        <img src="assets/img/image1.jpeg" alt="Indomie Double + Telor">
+                        <div class="item-info">
+                            <p>Indomie Double + Telor</p>
+                            <p>Rp. 15.000</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="assets/img/image2.jpg" alt="Roti Bakar">
+                        <div class="item-info">
+                            <p>Roti Bakar</p>
+                            <p>Rp. 10.000</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img src="assets/img/image3.jpeg" alt="Extra Joss Susu">
+                        <div class="item-info">
+                            <p>Extra Joss Susu</p>
+                            <p>Rp. 7.000</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <div class="notification-content">
+            <span class="notification-icon">🔔</span>
+            <div class="notification-text">
+                <strong>Notifikasi</strong>
+                <p>Berhasil!</p>
+            </div>
+            <span class="notification-close" id="closeNotification">✖</span>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script>
+        feather.replace();
+    </script>
+
+    <script src="js/javascript.js"></script>
+</body>
+
+</html>

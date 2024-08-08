@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="icon" type="image/png" href="../assets/logo.png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <nav>
+        <img src="../assets/logo.png" alt="Logo">
+        <div class="navigasi">
+            <ul>
+                <a href="../index.html">
+                    <li><i data-feather="user"></i> Pesanan Pelanggan</li>
+                </a>
+                <a href="menu.html">
+                    <li class="active"><i data-feather="menu"></i> Menu</li>
+                </a>
+                <a href="meja.html">
+                    <li><i data-feather="table"></i> Meja</li>
+                </a>
+                <a href="bahan_baku.html">
+                    <li><i data-feather="box"></i> Bahan Baku</li>
+                </a>
+                <a href="laporan_keuangan.html"></a>
+                <li><i data-feather="file-text"></i> Laporan Keuangan</li>
+                </a>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="pemanis"></div>
+
+    <section class="container">
+        <div class="header-container">
+            <div class="header-1">
+                <h1><span>Menu</span></h1>
+            </div>
+            <div class="container-pencarian-dan-tambah">
+                <div class="pencarian">
+                    <input type="text" placeholder="Cari Nama Menu">
+                </div>
+                <div class="tambah">
+                    <button id="openTambahModal">+</button>
+                </div>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Kode Menu</th>
+                    <th>Nama Menu</th>
+                    <th>Kategori</th>
+                    <th>Harga</th>
+                    <th>Stok</th>
+                    <th>Aksi</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>MB1</td>
+                    <td>Indomie Double + Telor</td>
+                    <td>Makanan Berat</td>
+                    <td>Rp. 15.000</td>
+                    <td>30</td>
+                    <td>
+                        <button class="edit" id="openEditModal"><i data-feather="edit"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>M1</td>
+                    <td>Extra Joss Susu</td>
+                    <td>Minuman</td>
+                    <td>Rp. 7.000</td>
+                    <td>30</td>
+                    <td>
+                        <button class="edit" id="openEditModal"><i data-feather="edit"></i></button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>MR1</td>
+                    <td>Roti Bakar</td>
+                    <td>Makanan Ringan</td>
+                    <td>Rp. 10.000</td>
+                    <td>20</td>
+                    <td>
+                        <button class="edit" id="openEditModal"><i data-feather="edit"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Modal Tambah Menu -->
+    <div id="TambahModal" class="TambahModal">
+        <div class="modal-content-template">
+            <h2>Tambah <span>Menu</span></h2>
+            <form class="form-container">
+                <div class="image-upload">
+                    <label for="file-input">
+                        <div class="upload-icon">
+                            <i data-feather="image"></i>
+                        </div>
+                        <p>Upload Gambar</p>
+                    </label>
+                    <input id="file-input" type="file" style="display: none;">
+                </div>
+                <input type="text" placeholder="Nama Menu">
+                <select>
+                    <option value="" disabled selected>Kategori</option>
+                    <option value="makanan_berat">Makanan Berat</option>
+                    <option value="makanan_ringan">Makanan Ringan</option>
+                    <option value="minuman">Minuman</option>
+                </select>
+                <input type="text" placeholder="Harga">
+                <input type="text" placeholder="Stok">
+                <select>
+                    <option value="" disabled selected>Bahan Baku</option>
+                    <option value="bahan1">Bahan 1</option>
+                    <option value="bahan2">Bahan 2</option>
+                    <option value="bahan3">Bahan 3</option>
+                </select>
+                <div class="actions">
+                    <button type="button" class="confirm" onclick="closetemplateModal(), showNotification()"><i
+                            data-feather="check"></i></button>
+                    <button type="button" class="cancel" onclick="closetemplateModal()"><i
+                            data-feather="x"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Edit Menu -->
+    <div id="EditModal" class="EditModal">
+        <div class="modal-content-template">
+            <h2>Edit <span>Menu</span></h2>
+            <form class="form-container">
+                <div class="image-upload">
+                    <label for="file-input">
+                        <div class="upload-icon">
+                            <i data-feather="image"></i>
+                        </div>
+                        <p>Upload Gambar</p>
+                    </label>
+                    <input id="file-input" type="file" style="display: none;">
+                </div>
+                <input type="text" placeholder="Nama Menu">
+                <select>
+                    <option value="" disabled selected>Kategori</option>
+                    <option value="makanan_berat">Makanan Berat</option>
+                    <option value="makanan_ringan">Makanan Ringan</option>
+                    <option value="minuman">Minuman</option>
+                </select>
+                <input type="text" placeholder="Harga">
+                <input type="text" placeholder="Stok">
+                <select>
+                    <option value="" disabled selected>Bahan Baku</option>
+                    <option value="bahan1">Bahan 1</option>
+                    <option value="bahan2">Bahan 2</option>
+                    <option value="bahan3">Bahan 3</option>
+                </select>
+                <div class="actions">
+                    <button type="button" class="confirm" onclick="closetemplateModal(), showNotification()"><i
+                            data-feather="check"></i></button>
+                    <button type="button" class="hapus" id="openModalConfirmation"><i data-feather="trash"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Confirmation -->
+    <div id="confirmationModal" class="confirmationModal">
+        <div class="modal-content-confirmation">
+            <p><span>Hapus</span> Menu ?</p>
+            <div class="actions">
+                <button id="confirmDelete" class="confirm"><i data-feather="check"></i></button>
+                <button id="cancelDelete" class="cancel hapus"><i data-feather="x"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <div class="notification-content">
+            <span class="notification-icon">🔔</span>
+            <div class="notification-text">
+                <strong>Notifikasi</strong>
+                <p>Berhasil!</p>
+            </div>
+            <span class="notification-close" id="closeNotification">✖</span>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="../js/javascript.js"></script>
+    <script>
+        feather.replace();
+
+        var TambahModal = document.getElementById("TambahModal");
+        var EditModal = document.getElementById("EditModal");
+        var confirmationModal = document.getElementById("confirmationModal");
+
+        var openTambahModalBtn = document.getElementById("openTambahModal");
+        var openEditModalBtn = document.getElementById("openEditModal");
+        var openModalConfirmationBtns = document.querySelectorAll("#openModalConfirmation");
+
+
+        openTambahModalBtn.addEventListener("click", function () {
+            TambahModal.style.display = "block";
+        });
+
+        openEditModalBtn.addEventListener("click", function () {
+            EditModal.style.display = "block";
+        });
+
+        openModalConfirmationBtns.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                confirmationModal.style.display = "block";
+            });
+        });
+
+        var confirmDeleteBtn = document.getElementById("confirmDelete");
+        var cancelDeleteBtn = document.getElementById("cancelDelete");
+
+        confirmDeleteBtn.addEventListener('click', function () {
+            closetemplateModal();
+        });
+
+        cancelDeleteBtn.addEventListener('click', function () {
+            confirmationModal.style.display = "none";
+        });
+
+        function closetemplateModal() {
+            TambahModal.style.display = "none";
+            EditModal.style.display = "none";
+            confirmationModal.style.display = "none";
+        }
+
+    </script>
+
+
+</body>
+
+</html>

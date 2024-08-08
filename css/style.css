@@ -1,0 +1,1042 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+nav {
+    background-color: #F0EDD5;
+    padding: 5px 20px;
+    width: 16vw;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+nav img {
+    height: 10vw;
+}
+
+nav .navigasi ul {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+nav .navigasi ul li {
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.15vw;
+    font-weight: bold;
+    gap: 20px;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+
+nav .navigasi ul li::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #c79b24;
+    transition: width 0.3s ease;
+    /* Transisi untuk underline */
+}
+
+nav .navigasi ul li:hover {
+    color: #c79b24;
+}
+
+nav .navigasi ul li:hover::after {
+    width: 100%;
+}
+
+nav .navigasi ul li.active {
+    color: #c79b24;
+}
+
+nav .navigasi ul li.active::after {
+    width: 100%;
+}
+
+.pemanis {
+    height: 25px;
+    width: 100%;
+    position: absolute;
+    z-index: -1;
+    background-color: #c79b24;
+}
+
+.container {
+    margin-left: 19vw;
+    padding: 20px;
+    margin-top: 20px;
+    width: calc(100% - 19vw);
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-1 h1 {
+    font-size: 2rem;
+}
+
+.header-1 span {
+    color: #C79B24;
+    background: filter;
+}
+
+.header-container .container-pencarian-dan-tambah {
+    display: flex;
+    flex-direction: row;
+    margin-right: 1vw;
+    gap: 10px;
+}
+
+.pencarian {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.pencarian input {
+    width: 100%;
+    padding: 10px 20px 10px 40px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    background-color: #f4f4f4;
+}
+
+.pencarian::before {
+    content: '\1F50D';
+    position: absolute;
+    left: 15px;
+    font-size: 16px;
+    color: #888;
+}
+
+.pencarian button {
+    padding: 5px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.tambah button {
+    padding: 10px 15px;
+    background-color: #D4BD85;
+    color: #6E4F00;
+    border: none;
+    cursor: pointer;
+    border-radius: 100%;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tbody tr:hover {
+    background-color: #f1f1f1;
+}
+
+table button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+table button i {
+    color: #333;
+}
+
+.detail {
+    color: #1A45B2;
+}
+
+.selesai {
+    color: #00FF37;
+}
+
+.edit {
+    color: #C79B24;
+}
+
+/* Modal Scroll */
+.scroll {
+    overflow-y: auto;
+}
+
+/* Modal Tambah Pesanan */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #F0EDD5;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    height: 100%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+h2 span {
+    color: #c79b24;
+}
+
+.modal-body {
+    display: flex;
+    width: 100%;
+}
+
+.form-section {
+    flex: 1;
+    padding-right: 20px;
+}
+
+.menu-section {
+    flex: 2;
+    padding-left: 20px;
+    border-left: 4px solid #6E4F00;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+form label {
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+form input,
+form select,
+form select option {
+    width: 100%;
+    padding: 10px 0;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[readonly] {
+    background-color: #DBDBDB;
+}
+
+form input {
+    width: 97.5%;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+
+/* Style the select element */
+form select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23C79B24" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 32px 32px;
+    width: 100%;
+}
+
+.menu-items {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    width: 100%;
+    height: 220px;
+}
+
+.menu-item {
+    text-align: center;
+    flex: 1;
+    margin: 0 10px;
+}
+
+.menu-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.menu-item p {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.total {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+
+.total span {
+    color: #c79b24;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.actions button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5em;
+}
+
+.actions .confirm {
+    color: #00FF37;
+}
+
+.actions .hapus {
+    color: #FF0000;
+}
+
+.actions .confirm svg,
+.actions .hapus svg,
+.actions .cancel svg {
+    width: 50px;
+    height: 100%;
+}
+
+.container-pesan-menu {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+.menu-category {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.menu-category h3 {
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-height: 250px;
+    height: 100%;
+}
+
+.menu-item img {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.menu-item p {
+    margin: 5px 0;
+    font-weight: bold;
+}
+
+.add-button,
+.subtract-button {
+    background-color: #c79b24;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+/* Modal Confirmation */
+.confirmationModal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content-confirmation {
+    background-color: #f9e7c8;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 100%;
+    height: 100%;
+    max-width: 300px;
+    max-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+}
+
+.modal-content-confirmation p {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: black;
+}
+
+.modal-content-confirmation p span {
+    color: red;
+    font-weight: bold;
+}
+
+/* Modal Detail */
+.detailModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content-detail {
+    background-color: #f9e7c8;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 800px;
+    border-radius: 10px;
+    position: relative;
+}
+
+.close {
+    color: #ff0000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content-detail h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.modal-content-detail h2 span {
+    color: #c79b24;
+}
+
+.order-details {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-info {
+    flex: 2;
+    padding-right: 20px;
+}
+
+.order-items {
+    flex: 2;
+    margin-top: 20px;
+    padding-left: 20px;
+    border-left: 2px solid #6e4f00;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+}
+
+.item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 10px;
+    margin-right: 10px;
+}
+
+.item-info p {
+    margin: 0;
+}
+
+.total-payment {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.total-payment span {
+    color: #c79b24;
+}
+
+.notification {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    width: 300px;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.notification-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.notification-text {
+    flex: 1;
+}
+
+.notification-close {
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Pembayaran Modal */
+.pembayaranModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content-pembayaran {
+    background-color: #f9e7c8;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pembayaran-details input,
+.pembayaran-details select {
+    width: 300px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.pembayaran-details select {
+    width: 322px;
+}
+
+.close {
+    color: #ff0000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content-pembayaran h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #c79b24;
+}
+
+.pembayaran-details {
+    align-items: center;
+}
+
+.pembayaran-details p {
+    margin: 10px 0;
+    font-size: 1.2em;
+    color: #000;
+}
+
+.print-receipt {
+    background-color: #00ff00;
+    color: #000;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto 0;
+    width: 80%;
+    gap: 10px;
+    font-weight: bold;
+}
+
+.cashOptions {
+    display: flex;
+    flex-direction: column;
+}
+
+.qrisOptions {
+    display: none;
+    align-items: center;
+}
+
+.buat-qris {
+    background-color: #d3b88c;
+    color: #6e4f00;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    margin: 10px 0;
+    width: 80%;
+}
+
+.belum-dibayar {
+    background-color: #ff0000;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 16px;
+    font-size: 1em;
+    width: 60%;
+}
+
+.TambahModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.EditModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content-template {
+    background-color: #f9e7c8;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 400px;
+    border-radius: 10px;
+    position: relative;
+    text-align: center;
+}
+
+
+.modal-content-tambah input,
+.modal-content-tambah select {
+    width: 280px;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modal-content-tambah select {
+    width: 300px;
+}
+
+.close {
+    color: #ff0000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content-tambah h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.modal-content-tambah h2 span {
+    color: #c79b24;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.image-upload {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.image-upload label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    border: 2px dashed #c79b24;
+    padding: 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.image-upload label:hover {
+    background-color: #f0e6d2;
+    border-color: #b58900;
+}
+
+.upload-icon {
+    font-size: 50px;
+    color: #c79b24;
+    margin-bottom: 10px;
+}
+
+.image-upload p {
+    color: #c79b24;
+    font-size: 16px;
+    margin: 0;
+}
+
+.actions {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.actions button {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.actions .cancel {
+    color: #ff0000;
+}
+
+.status.terisi {
+    color: red;
+}
+
+.status.kosong {
+    color: green;
+}
+
+.laporan-keuangan {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.laporan-keuangan h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.laporan-keuangan h1 span {
+    color: #f39c12;
+}
+
+.summary {
+    width: 100%;
+    margin-bottom: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.card {
+    display: flex;
+    border: 2px solid rgba(0, 0, 0, 0.5);
+    width: 100%;
+    font-weight: bold;
+}
+
+.card.pemasukan {
+    background-color: #f1c40f;
+
+}
+
+.card.pengeluaran {
+    background-color: #e74c3c;
+}
+
+.card.profit {
+    background-color: #2ecc71;
+}
+
+.card svg {
+    border-right: 2px solid rgba(0, 0, 0, 0.5);
+    width: 100px;
+    height: auto;
+}
+
+.container-text {
+    width: 100%;
+}
+
+.padding-left {
+    padding-left: 8px;
+}
+
+.size {
+    font-size: 24px;
+}
+
+.tanggal {
+    width: 100%;
+    border-top: 2px solid rgba(0, 0, 0, 0.5);
+    text-align: center;
+    padding-top: 15px;
+}
+
+.filter-laporan {
+    margin-bottom: 20px;
+}
+
+.filter-flex {
+    display: flex;
+    justify-content: space-between;
+}
+
+.filter-laporan h2 {
+    font-size: 20px;
+    color: #333;
+}
+
+.filter-laporan h2 span {
+    color: #f39c12;
+}
+
+.filter-laporan form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.filter-laporan form label {
+    margin-right: 10px;
+}
+
+.filter-laporan form select {
+    width: 100%;
+}
+
+.filter-laporan form input,
+.filter-laporan form select,
+.filter-laporan form button {
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.filter-laporan form button {
+    background-color: #C79B24;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 13px;
+    width: 20%;
+    border: 1px solid #6E4F00;
+}
+
+.laporan-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.laporan-table th,
+.laporan-table td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+.laporan-table th {
+    background-color: #f39c12;
+    color: #fff;
+}
+
+.laporan-table td button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hapus {
+    color: #ff0000;
+}
